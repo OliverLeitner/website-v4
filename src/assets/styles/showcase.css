@@ -1,0 +1,751 @@
+/*stenciljs doesnt like this one*/
+/*@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");*/
+
+/**
+
+to implement from google: 
+
+font: 400 16px/24px Roboto,Noto Sans,Noto Sans JP,Noto Sans KR,Noto Naskh Arabic,Noto Sans Thai,Noto Sans Hebrew,Noto Sans Bengali,sans-serif;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: Roboto, "Noto Sans", "Noto Sans JP", "Noto Sans KR", "Noto Naskh Arabic", "Noto Sans Thai", "Noto Sans Hebrew", "Noto Sans Bengali", sans-serif;
+
+*/
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto'), url(https://fonts.googleapis.com/css?family=Roboto&display=swap) format('eot');
+  font-display: swap;
+}
+
+.has-vertically-aligned-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto', Tahoma, sans-serif;
+  font-display: swap;
+  font-size: 12pt !important;
+  width: 100%;
+  min-height: 100%;
+  scroll-behavior: smooth !important;
+}
+
+/* taken from google, thanks guys */
+body, html {
+  color: #202124;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  height: 100%;
+  margin: 0;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+.header-wrapper {
+  padding-bottom: 30px;
+}
+
+/* handling some weird defaults */
+.columns {
+  margin: 0 !important;
+}
+
+.column {
+  padding: 0 !important;
+}
+
+.right-image {
+  margin: 2em !important;
+}
+/* end of handling some weird defaults */
+
+.hero {
+  background-position: center;
+  background-image: url("/assets/images/wsee_use.jpg");
+  background-size: cover;
+  height: 380px;
+  color: white;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.hero .title {
+  font-size: 5rem;
+  color: whitesmoke;
+}
+
+.hero .subtitle {
+  color: whitesmoke;
+}
+
+.hero .profession {
+  padding-top: 30px;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+}
+
+.hero .hero-foot {
+  height: 50px;
+  background: white;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.082);
+}
+
+.hero-body {
+  height: 376px;
+}
+
+.hero.is-large .hero-body {
+  padding: 7.5rem 1.5rem !important;
+}
+
+@media (max-width: 599px) {
+  .hero .hero-foot {
+    display: none;
+    height: 18rem;
+    background-color: #1f2c6c;
+    color: white;
+  }
+  .hero.is-large .hero-body {
+    padding: 1rem 1.5rem !important;
+  }
+  .navbar-burger {
+    color: #fff !important;
+  }
+  .banner-text {
+    margin-top: 0em !important;
+  }
+  .banner-text h1, .banner-text h2, .banner-text h3 {
+    font-size: 2em !important;
+  }
+  .banner-text .title:not(.is-spaced)+.subtitle {
+    margin-top: -50px;
+    font-size: 1.2rem !important;
+  }
+}
+
+.hero .hero-foot .hero-foot--wrapper {
+  margin: 0 auto;
+  height: 50px;
+  margin-top: .3em;
+  max-width: 77vw;
+}
+
+.hero .hero-foot .hero-foot--wrapper .hero-menu-desktop {
+  line-height: 38px;
+  font-weight: normal;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+.hero .hero-foot .hero-foot--wrapper .hero-menu-desktop ul li {
+  display: inline-block;
+  padding-right: 15px;
+}
+
+.hero .hero-foot .hero-foot--wrapper .hero-menu-desktop ul li a.is-active {
+  border-bottom: 2px solid #1f2c6c;
+}
+
+.hero .hero-foot .hero-foot--wrapper .hero-menu-desktop ul li a {
+  color: #1f2c6c;
+}
+
+.hero .hero-foot .hero-foot--wrapper .hero-menu-desktop ul li a:hover {
+  color: #1f2c6c;
+  transition: all .2s ease-in-out;
+  border-bottom: 2px solid #1f2c6c;
+}
+
+.main-content {
+  color: #3c4172;
+}
+
+.main-content .section-title {
+  color: #43485c;
+  text-transform: uppercase;
+  padding-bottom: 40px;
+  padding-top: 30px;
+}
+
+.footer {
+  background-color: #02024b !important;
+  color: whitesmoke;
+  padding: 2rem !important;
+  max-height: 14em;
+}
+
+@media (max-width: 599px) {
+  .footer {
+    max-height: initial;
+    padding: 1.5rem 1rem 1rem !important;
+  }
+}
+
+.footer a, .footer a:hover {
+  color: lightgrey;
+}
+
+.footer a i {
+  font-size: 1.5rem;
+}
+
+.footer a .nav-item {
+  color: whitesmoke;
+}
+
+#toTop {
+  height: 50px;
+  width: 50px;
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: rgba(31, 44, 108, 0.65);
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 2rem;
+  box-shadow: 0 5px 20px rgba(14, 25, 80, 0.3);
+}
+
+#toTop a {
+  color: white;
+}
+
+#toTop:hover {
+  background-color: #43485c;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: rgba(245, 245, 245, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #43485c;
+}
+
+body.preloader-site {
+  overflow: hidden;
+}
+
+.preloader-wrapper {
+  height: 100%;
+  width: 100%;
+  background: #1f2c6c;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999999;
+}
+
+.preloader-wrapper .preloader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 120px;
+}
+
+.white
+{color:ghostwhite}
+
+#cookie-law {
+  text-align: center;
+  padding: 29px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: lightsteelblue;
+  color: #000;
+  z-index: 2;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#cookie-law .is-centered {
+  margin-bottom: 5px;
+}
+
+#cookie-law button {
+  margin-top: 20px;
+}
+
+p {
+  margin-bottom: 1em !important;
+}
+
+.footer p {
+  margin: 0 !important;
+}
+
+.hljs-string,
+.hljs-section,
+.hljs-selector-class,
+.hljs-template-variable,
+.hljs-deletion {
+  color: #800;
+}
+
+.hljs {
+  display: inline-table !important;
+  overflow-x: auto;
+  padding: 0.5em;
+}
+
+.hljs,
+.hljs-subst {
+  color: black;
+}
+
+pre {
+  margin-bottom: 1em !important;
+  padding: 1em !important;
+  background-color: #f8f8f8 !important;
+}
+
+.pagination {
+  margin-top: 3em !important;
+}
+
+.pagination-link a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding-top: 20%;
+}
+
+.pagination-link.is-current a {
+  color: #fff !important;
+}
+
+.listImage {
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-right: 2em !important;
+}
+
+@media (max-width: 599px) {
+  .listImage {
+    margin-right: auto !important;
+    text-align: center;
+  }
+}
+
+.listImage a img {
+  margin-top: 1.8em;
+}
+
+.listImage-set {
+  max-width: 616px !important;
+}
+
+.blogListTitle {
+  height: 100%;
+  max-width: 780px;
+  margin: 0 !important;
+  width: 100%;
+}
+
+.blogListTitle h1 {
+  font-weight: bold;
+  font-size: .9em;
+  margin-top: 1.5rem;
+  margin-bottom: .5rem;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.blogListTitle h1 a {
+  display: block;
+}
+
+.pagination-link a, .is-title a {
+  color: #1f2c6c !important;
+}
+
+a:hover {
+  opacity: .7;
+}
+
+.pagination-link.is-current {
+  background-color: #1f2c6c !important;
+}
+
+.pagination-link.is-current:hover {
+  opacity: .7;
+}
+
+button.button.is-link {
+  background-color: #1f2c6c !important;
+}
+
+button.button.is-link.is-light {
+  background-color: #f0f3f5 !important;
+}
+
+button:hover {
+  opacity: .7;
+}
+
+.is-danger {
+  font-weight: bold;
+  font-size: 1em !important;
+}
+
+input.is-danger, textarea.is-danger {
+  border: 2px solid #990000;
+}
+
+input.is-success, textarea.is-success {
+  border: 2px solid #003300;
+}
+
+ul.pagination-list li {
+  padding: 0;
+  display: inline-block;
+}
+
+.pagination-link {
+  padding: 0;
+}
+
+span.is-required {
+  position: relative;
+  color: #990000;
+  font-weight: bold;
+  font-size: 2em;
+  top: 12px;
+  z-index: 10;
+  left: .5vw;
+  margin-right: .5vw;
+}
+
+.wa-mediabox-prev, .wa-mediabox-next {
+  visibility: hidden;
+}
+
+#topMenu {
+  width: 100%;
+  border-bottom: 1px solid black;
+  position: fixed;
+  top: 0;
+  z-index: 12;
+}
+
+.bloglist-description a {
+  color: black;
+}
+
+.bloglist-description p {
+  margin-top: .5rem;
+}
+
+.social {
+  position: relative;
+  z-index: 1;
+  float: right;
+  margin-top: -2.3em;
+}
+
+.social * {
+  margin-left: 4px;
+  color: #1f2c6c;
+}
+
+.wa-mediabox-close {
+  background-color: #1f2c6c !important;
+}
+
+.bloglist-header {
+  width: 100%;
+}
+
+main {
+  max-width: 780px;
+  margin: 0 auto;
+  min-height: 47.2vh;
+}
+
+.main-content h1 {
+  margin-bottom: 0 !important;
+}
+
+.centermenu {
+  position: relative;
+  top: -8px;
+  padding-left: 15px;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+.current_page {
+  margin-left: 10px;
+}
+
+.bc_title {
+  font-weight: bold;
+  float: left;
+  margin-right: 1em;
+}
+
+.bc_current {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.blink_me {
+  animation: blinker 1s linear infinite;
+  color: #990000;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 599px) {
+  .breadcrumb {
+    display: none;
+  }
+}
+
+.section-light {
+  margin: 0 auto;
+}
+
+.hero-foot--wrapper {
+  max-width: 1080px;
+}
+
+.blog {
+  padding: 0 !important;
+  margin: 0 auto;
+  max-width: 77vw;
+  margin-bottom: 5vh;
+}
+
+.page {
+  max-width: 82vw;
+  margin-bottom: 5vh;
+}
+
+.bloglist {
+  /*padding: 0 !important;*/
+  max-width: 82vw;
+  margin-bottom: 5vh;
+}
+
+@media (max-width: 599px) {
+  .page {
+    max-width: 95% !important;
+    padding: 0 !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+.bloglist-header {
+  margin: 0 auto;
+}
+
+.bloglist-description div.column {
+  margin: 0 auto;
+}
+
+.bloglist-subheader {
+  width: 100%;
+  height: 20px;
+}
+
+.bloglist-publishdate {
+  width: 23;
+  float: left;
+}
+
+.bloglist-comments {
+  float: right;
+}
+
+.bloglist-comments .disqus-comment-count {
+  margin-left: 5px;
+}
+
+.blog .columns .column ul {
+  margin-bottom: 5em !important;
+}
+
+.blog .columns .column ul li {
+  width: 100%;
+  clear: both;
+  float: left;
+}
+
+.blog .columns .column ul li * {
+  margin: 0 !important;
+}
+
+.blog .columns .column ul li:last-child * {
+  margin-bottom: 1em !important;
+}
+
+.page .columns .column ul {
+  margin-bottom: 5em !important;
+}
+
+.page .columns .column ul li {
+  width: 100%;
+  clear: both;
+  float: left;
+}
+
+.page .columns .column ul li {
+  margin-bottom: 0 !important;
+}
+
+.page .columns .column ul li:last-child {
+  margin-bottom: 1em !important;
+}
+
+footer .container {
+  width: 77vw;
+}
+
+footer h2 {
+  text-align: left;
+  margin: 0 !important;
+  margin-bottom: .5rem !important;
+  padding: 0;
+}
+
+footer ul {
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+footer ul li {
+  margin: 0;
+  padding: 0;
+  line-height: 2em;
+}
+
+footer ul li a > svg {
+  margin-right: 10px;
+  clear: both;
+  float: left;
+}
+
+footer h2.subtitle {
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  padding-bottom: .5em;
+}
+
+footer .copyright {
+  border-top: 1px solid whitesmoke;
+  height: 20px;
+}
+
+@media (max-width: 599px) {
+  footer .container {
+    width: 100%;
+  }
+}
+
+button.navbar-burger {
+  background-color: transparent !important;
+  color: #fff !important;
+  border: 0 !important;
+}
+
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: #1f2c6c; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+
+.blog ul {
+  list-style-type: disc;
+}
+
+app-blogdetail .blog .columns .column ul {
+  margin: 0 0 20px !important;
+  padding: 0 !important;
+  display: inline-block;
+  width: 100%;
+}
+
+app-blogdetail .blog .columns .column ul li {
+  margin-left: 20px;
+  width: 95%;
+}
+
+/********* specific stuff ************/
+/* host hack */
+:host {
+  display: contents;
+}
+
+/* firefox makes title transparent under link */
+a[title~="Home"]:hover {
+  opacity: 1;
+}
+
+/* markdown alignment hacks */
+p > [alt~="class=center"] {
+  display: block;
+  margin: auto;
+}
+
+p > [alt~="class=left"] {
+  display: block;
+  margin-bottom: 14px;
+  float: left;
+}
+
+p > [alt~="class=right"] {
+  display: block;
+  margin-bottom: 14px;
+  float: right;
+}
