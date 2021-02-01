@@ -1,4 +1,4 @@
-# stencil-components
+# my personal blog v4
 base components for my new blog redo
 
 About a year ago i did finally catch up with tech and decided to rewrite my personal web blog, while v3 was built with wordpress, v4 now is based on a more modern stack of technology, featuring https://strapi.io as a cms and for the frontend, i decided to run on as little dependencies as possible. thus i am using the component generation and compilation tool https://stenciljs.com, without any bindings to any other kind of frameworks.
