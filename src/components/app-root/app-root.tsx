@@ -50,7 +50,7 @@ export class AppRoot {
                 </div>
                 <div id="mobile-nav" class="navbar-menu">
                   <div class="navbar-end">
-                    <stencil-route-link url="/" onClick={this.toggleBurger} anchorRole="link" anchorTitle="Home">
+                    <stencil-route-link url="/#ptop" onClick={this.toggleBurger} anchorRole="link" anchorTitle="Home">
                       <div class="navbar-item">
                         Home
                     </div>
@@ -58,14 +58,14 @@ export class AppRoot {
                     {this.titles.map((title) =>
                       !title.hidden
                         ?
-                        <stencil-route-link url={'/page/' + title.id + '/' + title.cleanedTitle + '/'} anchorRole="link" anchorTitle={title.Title}>
+                        <stencil-route-link url={'/page/' + title.id + '/' + title.cleanedTitle + '/#ptop'} anchorRole="link" anchorTitle={title.Title}>
                           <div class="navbar-item">
                             {title.Title}
                           </div>
                         </stencil-route-link>
                         : <span />
                     )}
-                    <stencil-route-link url={'/contact/'}>
+                    <stencil-route-link url={'/contact/#ptop'}>
                       <div class="navbar-item">
                         Contact
                     </div>
@@ -75,7 +75,7 @@ export class AppRoot {
               </nav>
               <div class="hero-body">
                 <div class="container has-text-centered banner-text">
-                  <stencil-route-link url='/' anchorRole="link" anchorTitle="Home" exact={true}>
+                  <stencil-route-link url='/#ptop' anchorRole="link" anchorTitle="Home" exact={true}>
                     <h1 class="subtitle">{env.INTRO}</h1>
                     <h1 class="title">{env.SITENAME}</h1>
                     <h1 class="subtitle profession">{env.SLOGAN}</h1>
@@ -88,7 +88,7 @@ export class AppRoot {
                     <div class="column is-12 is-size-5 hero-menu-desktop">
                       <ul>
                         <li>
-                          <stencil-route-link url="/" anchorRole="link" anchorTitle="Home" exact={true}>
+                          <stencil-route-link url="/#ptop" anchorRole="link" anchorTitle="Home" exact={true}>
                             <i class="fas fa-home fa-2x"></i>
                           </stencil-route-link>
                         </li>
@@ -96,11 +96,11 @@ export class AppRoot {
                           !title.hidden
                             ?
                             <li>
-                              <stencil-route-link class="centermenu" url={'/page/' + title.id + '/' + title.cleanedTitle + '/'} anchorRole="link" anchorTitle={title.Title} activeClass="is-active" exact={true}>{title.Title}</stencil-route-link>
+                              <stencil-route-link class="centermenu" url={'/page/' + title.id + '/' + title.cleanedTitle + '/#ptop'} anchorRole="link" anchorTitle={title.Title} activeClass="is-active" exact={true}>{title.Title}</stencil-route-link>
                             </li>
                             : <span />
                         )}
-                        <li><stencil-route-link class="centermenu" url={'/contact/'} anchorRole="link" anchorTitle="Contact" activeClass="is-active" exact={false}>Contact</stencil-route-link></li>
+                        <li><stencil-route-link class="centermenu" url={'/contact/#ptop'} anchorRole="link" anchorTitle="Contact" activeClass="is-active" exact={false}>Contact</stencil-route-link></li>
                       </ul>
                       <div class="social">
                         <a rel="noreferrer" href="https://twitter.com/OliverNBLOG" target="_blank" title="Oliver Leitner Twitter"><i class="fab fa-twitter-square fa-2x"></i></a>
@@ -133,7 +133,7 @@ export class AppRoot {
                   <h2 class="subtitle">Contact</h2>
                   <ul>
                     <li>
-                      <stencil-route-link url={'/contact/'} anchorRole="link" anchorTitle="Contact" activeClass="is-active" exact={false}><i class="fa fa-envelope fa-2x" aria-hidden="true"></i>Get in touch with me</stencil-route-link>
+                      <stencil-route-link url={'/contact/#ptop'} anchorRole="link" anchorTitle="Contact" activeClass="is-active" exact={false}><i class="fa fa-envelope fa-2x" aria-hidden="true"></i>Get in touch with me</stencil-route-link>
                     </li>
                   </ul>
                 </div>
@@ -148,8 +148,8 @@ export class AppRoot {
                 <div class="column is-4">
                   <h2 class="subtitle">General</h2>
                   <ul>
-                    <li><stencil-route-link url={'/page/1/about_me/'} anchorRole="link" anchorTitle="About me" exact={true}>About me</stencil-route-link></li>
-                    <li><stencil-route-link url={'/page/3/imprint/'} anchorRole="link" anchorTitle="Imprint / Privacy policy" exact={true}>Imprint / Privacy policy</stencil-route-link></li>
+                    <li><stencil-route-link url={'/page/1/about_me/#ptop'} anchorRole="link" anchorTitle="About me" exact={true}>About me</stencil-route-link></li>
+                    <li><stencil-route-link url={'/page/3/imprint/#ptop'} anchorRole="link" anchorTitle="Imprint / Privacy policy" exact={true}>Imprint / Privacy policy</stencil-route-link></li>
                   </ul>
                 </div>
               </div>

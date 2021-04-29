@@ -71,8 +71,8 @@ export class AppBloglist implements ComponentInterface {
               <ul class="pagination-list">
                 {this.pageNums.map((num) =>
                   this.match.params.number === num.toString() || !this.match.params.number && num === 1
-                    ? <li><stencil-route-link url={'/' + num} class="pagination-link is-current" anchorRole="link">{num}</stencil-route-link></li>
-                    : <li><stencil-route-link url={'/' + num} class="pagination-link" anchorRole="link">{num}</stencil-route-link></li>
+                    ? <li><stencil-route-link url={'/' + num + '#ptop'} class="pagination-link is-current" anchorRole="link">{num}</stencil-route-link></li>
+                    : <li><stencil-route-link url={'/' + num + '#ptop'} class="pagination-link" anchorRole="link">{num}</stencil-route-link></li>
                 )}
               </ul>
             </nav>

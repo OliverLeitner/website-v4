@@ -17,7 +17,7 @@ export class fetchData {
     public pageData?: Page,
     public blogData?: Blog
   ) {
-    this.converter = new Shodown.Converter({extensions: [showdownHighlight]});
+    this.converter = new Shodown.Converter({extensions: [showdownHighlight({pre: true})]});
   }
 
   public async returnTitles() {

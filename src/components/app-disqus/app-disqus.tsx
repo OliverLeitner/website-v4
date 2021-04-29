@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Host, h, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Watch, Host, Prop } from '@stencil/core';
 import { env } from '../../environment';
 
 @Component({
@@ -10,56 +10,30 @@ export class AppDisqus implements ComponentInterface {
   @Prop() pageIdentifier: string = "";
   @Prop() pageTitle: string = "";
   @Prop() env: any = env;
-  /*script: string = `
-  if (window && window.DISQUS)
-    window.DISQUS.reset({
-      reload: true,
-      config: function() {
-        this.page.Identifier = 'PAGE_IDENTIFIER';
-        this.page.url = 'PAGE_URL';
-        this.language = 'en';
-      }
-    });
-  `;*/
-  /*dqConfigId: string = `
-    window.disqus_config = function () {
-      this.page.identifier = 'PAGE_IDENTIFIER';
-    }
-  `;
-  dqConfigUrl: string = `
-    window.disqus_config = function () {
-      this.page.url = 'PAGE_URL';
-    }
-  `;*/
   dqConfig: string = `
   if (window)
   window.disqus_config = function () {
-    this.page.title = '` + this.pageTitle + `'; 
+    this.page.title = '` + this.pageTitle + `';
     this.language = "en";
     PAGE_URL
     PAGE_IDENTIFIER
-	};
+  };
   `;
-  /*dqScript: string = `
-  (function() {
-    if (!document.body.querySelector('d-embed')) {
-      var dsq = document.createElement('script'); 
-      dsq.type = 'text/javascript'; 
-      dsq.async = true;
-      dsq.id = 'd-embed';
-      dsq.src = 'https://neverslair.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }
-})();
-  `;*/
 
-  async getDisqusMainScript() {
+  @Watch('pageTitle')
+  watchHandler(newValue: string, oldValue: string) {
+    console.log(newValue);
+    console.log(oldValue);
+    if (newValue !== oldValue)
+      this.componentDidRender();
+  }
+
+  getDisqusMainScript() {
     const elem = document.createElement("script");
     elem.type = "text/javascript";
     elem.src = `https://${env.SHORTNAME}.disqus.com/embed.js`;
     elem.async = true;
     elem.id = "d-embed";
-    // elem.setAttribute("rel", "noreferrer");
     elem.setAttribute("data-timestamp", Date.now().toString());
     if (document && document.body && !document.body.querySelector("#d-embed"))
       document.body.appendChild(elem);
@@ -71,14 +45,21 @@ export class AppDisqus implements ComponentInterface {
     config.async = true;
     config.id = "dq-config";
     if (this.pageUrl) {
-      this.dqConfig = this.dqConfig.replace("PAGE_IDENTIFIER", "");
-      this.dqConfig = this.dqConfig.replace("PAGE_URL", "this.page.url = '" + this.pageUrl + "';");
+      /*this.dqConfig = this.dqConfig.replace("PAGE_IDENTIFIER", "");
+      this.dqConfig = this.dqConfig.replace("PAGE_URL", "this.page.url = '" + this.pageUrl + "';");*/
+      config["PAGE_IDENTIFIER"] = "";
+      config["PAGE_URL"] = "this.page.url = '" + this.pageUrl + "';";
     }
     if (!this.pageUrl) {
-      this.dqConfig = this.dqConfig.replace("PAGE_IDENTIFIER", "this.page.identifier = '" + this.pageIdentifier + "';");
-      this.dqConfig = this.dqConfig.replace("PAGE_URL", "");
+      /*this.dqConfig = this.dqConfig.replace("PAGE_IDENTIFIER", "this.page.identifier = '" + this.pageIdentifier + "';");
+      this.dqConfig = this.dqConfig.replace("PAGE_URL", "");*/
+      config["PAGE_URL"] = "";
+      config["PAGE_IDENTIFIER"] = "this.page.identifier = '" + this.pageIdentifier + "';";
+
     }
-    return this.dqConfig;
+    if (document && document.body)
+      document.body.appendChild(config);
+    // return this.dqConfig;
   }
 
   getDisqusReset() {
@@ -101,8 +82,7 @@ export class AppDisqus implements ComponentInterface {
     if (this.pageUrl) {
       script = script.replace("PAGE_IDENTIFIER", "");
       script = script.replace("PAGE_URL", "this.page.url = '" + this.pageUrl + "';");
-    }
-    if (!this.pageUrl) {
+    } else {
       script = script.replace("PAGE_IDENTIFIER", "this.page.identifier = '" + this.pageIdentifier + "';");
       script = script.replace("PAGE_URL", "");
     }
@@ -118,16 +98,18 @@ export class AppDisqus implements ComponentInterface {
   }
 
   componentDidRender() {
+    this.getDisqusConfig();
     this.getDisqusMainScript(); // load the main script
-    // this.getDisqusConfig();
     this.getDisqusReset();
   }
 
+  // load in comments:
+  // <script type="text/javascript" src="https://neverslair.disqus.com/recent_comments_widget.js?num_items=10&hide_avatars=0&avatar_size=40&excerpt_length=100"></script>
+  // <script id="dq-config" type="text/javascript" data-timestamp={Date.now().toString} innerHTML={this.getDisqusConfig()}></script>
   render() {
     return (
       <Host>
         <div id="disqus_thread"></div>
-        <script async id="dq-config" type="text/javascript" data-timestamp={Date.now().toString} innerHTML={this.getDisqusConfig()}></script>
       </Host>
     );
   }

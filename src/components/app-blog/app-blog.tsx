@@ -39,6 +39,7 @@ export class AppBlog implements ComponentInterface {
   @Prop() env: any = env;
   public imgSpecialStyle: string = "";
   public hasImageSet: string = "";
+  public myhash: string = Date.now().toString()
 
   queueResetCount = debounce(() => {
     const mywindow = window as any;
@@ -120,7 +121,7 @@ export class AppBlog implements ComponentInterface {
           {this.blog.listimage && this.blog.listimage.url
             ?
             <div class="column is-2 listImage">
-              <stencil-route-link url={'/blog/' + this.blog.id + '/' + this.blog.cleanedTitle + '/'}>
+              <stencil-route-link anchorRole="link" url={'/blog/' + this.blog.id + '/' + this.blog.cleanedTitle + '/#' + this.myhash}>
                 <img src={env.DATA_INTERFACE + this.blog.listimage.url} alt={this.blog.Title} />
               </stencil-route-link>
             </div>
@@ -129,7 +130,7 @@ export class AppBlog implements ComponentInterface {
           <div class={"columns is-multiline blogListTitle " + this.hasImageSet}>
             <div class="bloglist-header">
               <h1 class="is-title is-uppercase">
-                <stencil-route-link url={`/blog/${this.blog.id}/${this.blog.cleanedTitle}/`}>
+                <stencil-route-link anchorRole="link" url={`/blog/${this.blog.id}/${this.blog.cleanedTitle}/#${this.myhash}`}>
                   {this.blog.Title}
                 </stencil-route-link>
               </h1>
@@ -153,7 +154,7 @@ export class AppBlog implements ComponentInterface {
             </div>
             <div class="columns is-multiline bloglist-description">
               <div class="column">
-                <stencil-route-link url={'/blog/' + this.blog.id + '/' + this.blog.cleanedTitle + '/'}>
+                <stencil-route-link anchorRole="link" url={'/blog/' + this.blog.id + '/' + this.blog.cleanedTitle + '/#' + this.myhash}>
                   <p>{this.blog.Description}</p>
                 </stencil-route-link>
               </div>
